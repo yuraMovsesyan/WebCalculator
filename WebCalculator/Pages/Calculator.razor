@@ -1,0 +1,85 @@
+﻿@page "/calculator"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<input type="text" value="@line" />
+
+<table>
+	<tbody>
+		<tr>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('('))">(</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol(')'))">)</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('+'))">+</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('-'))">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('7'))">7</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('8'))">8</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('9'))">9</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('1'))">*</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('4'))">4</button>
+            </td>                                               
+            <td>                                                
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('5'))">5</button>
+            </td>                                               
+            <td>                                                
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('6'))">6</button>
+            </td>                                               
+            <td>                                                
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('1'))">/</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('1'))">1</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('2'))">2</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('3'))">3</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" @onclick="Calculate">=</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" @onclick="(_ => AddSympol('0'))">0</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+@code {
+    private string line = "";
+
+    private void AddSympol(char s)
+    {
+        line += s;
+    }
+
+    private void Calculate() => line = NeoMath.Calculator.Calculate(line).ToString();
+}
